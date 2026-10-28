@@ -1,0 +1,40 @@
+{
+  "name": "@rakan/dsh-sidebar-scroll",
+  "version": "0.1.1",
+  "private": true,
+  "type": "module",
+  "description": "Scroll sidebar navigation, projects, and conversations together in DeepSeek Harness.",
+  "author": "Rakanrkk",
+  "license": "MIT",
+  "homepage": "https://github.com/Rakanrkk/dsh-sidebar-scroll#readme",
+  "repository": {"type": "git", "url": "git+https://github.com/Rakanrkk/dsh-sidebar-scroll.git"},
+  "bugs": {"url": "https://github.com/Rakanrkk/dsh-sidebar-scroll/issues"},
+  "keywords": ["deepseek-harness", "dsh-plugin", "sidebar", "scroll", "projects", "workspace"],
+  "icon": "./icon.svg",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./lib/client.js",
+    "./icon": "./icon.svg",
+    "./locale/*.json": "./locale/*.json",
+    "./package.json": "./package.json"
+  },
+  "files": ["index.js", "lib/client.js", "cordis.patch.yml", "icon.svg", "locale", "README.md", "README.zh-CN.md", "LICENSE"],
+  "engines": {"node": ">=24", "dsh": "0.2.1-rc.3"},
+  "dsh": {
+    "bundle": {"patch": "./cordis.patch.yml"},
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-api-workspace-controller",
+        "@deepseek-ai/dsh-client-ui-renderer",
+        "@deepseek-ai/dsh-client-ui-layout",
+        "@deepseek-ai/dsh-client-ui-session",
+        "@deepseek-ai/dsh-client-ui-workspace",
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-shortcuts"
+      ]
+    }
+  },
+  "scripts": {"build": "node build.mjs", "test": "node --test tests/*.test.mjs"},
+  "devDependencies": {"esbuild": "0.28.2", "clsx": "2.1.1"}
+}
